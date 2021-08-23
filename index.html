@@ -1,0 +1,73 @@
+<head>
+  <link rel="stylesheet" href="/s/styles.css" />
+  <!-- CSS STYLESHEETS -->
+  <!-- Bootstrap -->
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous"
+  />
+  <!-- Leaflet -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""
+  />
+  <!-- Leaflet Grouped Layer Control -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-groupedlayercontrol/0.6.1/leaflet.groupedlayercontrol.css"
+    integrity="sha512-PpKEvRG//V8hN9idekL4WOjknpMTPFH3MnWpVbVBmlzXpoUfbBSr054U/TUmOzUnCOM9PAPiLhRgq0i00B4q3w=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <!-- Leaflet Fullscreen Control -->
+  <link
+    rel="stylesheet"
+    href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css"
+  />
+  <!-- JS SCRIPTS -->
+  <script defer src="/s/styles.js"></script>
+  <script defer src="/s/functions.js"></script>
+  <script defer src="/s/scripts.js"></script>
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Popper -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Leaflet -->
+  <script
+    src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""
+  ></script>
+  <!-- Leaflet Grouped Layer Control -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-groupedlayercontrol/0.6.1/leaflet.groupedlayercontrol.min.js"
+    integrity="sha512-cdomNfv1IRJE1v+2/irZdkNU09XwtYP2bQ1qK1ybWF/vz+P3GTMZtrXwlxTU41ExwoWGvEf0njIak5l/ZQaIMA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <!-- Leaflet Fullscreen Control -->
+  <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
+  <!-- Leaflet Maki Markers -->
+  <script src="/s/LeafletMakiMarkers.js"></script>
+</head>
+
+<body class="d-flex flex-column">
+  <div id="header" class="bg-light d-flex flex-row justify-content-around btn-group">
+    <button id="btn-cz" type="button" class="btn btn-success">DSNY Cleanup Zones</button>
+    <button id="btn-df" type="button" class="btn btn-success">9/11 Debris Field</button>
+    <button id="btn-dt" type="button" class="btn btn-success">Debris Transport</button>
+    <button id="btn-fk" type="button" class="btn btn-success">Fresh Kills Landfill</button>
+  </div>
+  <div id="mapid"></div>
+</body>
