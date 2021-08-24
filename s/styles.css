@@ -1,9 +1,13 @@
 html,
-body,
-#mapid {
+body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+/* MAP CONTAINER */
+#mapid {
+  height: 700px;
 }
 
 /* TOOLTIPS */
@@ -48,8 +52,13 @@ body,
 
 /* BOOTSTRAP */
 /* Buttons */
+.btn-group {
+  display: flex !important;
+}
+
 .btn-success {
   background-color: #00aa64 !important;
+  border-radius: 0px !important;
 }
 
 .btn-success:hover,
@@ -65,16 +74,68 @@ body,
 
 /* SQUARESPACE */
 /* Buttons */
-.sqs-block-code .sqs-block-content>#header :first-child {
+.sqs-block-code
+  .sqs-block-content
+  :first-child
+  :not(.leaflet-top, .leaflet-popup-content, .leaflet-marker-icon) {
   margin-top: 0px !important;
 }
+
 /* Map Area */
 .page-section {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
-.page-section>.content-wrapper {
+.page-section > .content-wrapper {
   padding-left: 0 !important;
   padding-right: 0 !important;
+}
+
+.sqs-block-content .leaflet-popup-tip {
+  display: none !important;
+}
+
+/* Change map size based on screen size */
+@media only screen and (max-width: 799px) {
+  #mapid {
+    height: 600px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #mapid {
+    height: 500px;
+  }
+
+  .container,
+  .container-sm {
+    max-width: 100% !important;
+  }
+
+  .content .col.sqs-col-12.span-12 {
+    padding-right: 15px !important;
+  }
+
+  .btn-group,
+  .btn-group-vertical {
+    display: block !important;
+  }
+  .btn-group .btn {
+    display: block !important;
+    float: none !important;
+    width: 100% !important;
+    margin-left: 0px !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #mapid {
+    height: 400px;
+  }
+
+  .btn-group .btn {
+    padding: 0.15rem !important;
+    font-size: 0.8rem !important;
+  }
 }
