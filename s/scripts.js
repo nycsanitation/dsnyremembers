@@ -11,7 +11,7 @@ const labelLayer = L.tileLayer(
 )
 
 // BASE LAYERS
-const mbLight = new L.tileLayer(mapboxURL, {
+const mbLight = new L.tileLayer(mapboxAPI, {
   id: "mapbox/light-v10",
   tileSize: 512,
   maxZoom: 18,
@@ -19,15 +19,7 @@ const mbLight = new L.tileLayer(mapboxURL, {
   accessToken: accessToken
 })
 
-const mbStreets = new L.tileLayer(mapboxURL, {
-  id: "mapbox/streets-v11",
-  tileSize: 512,
-  maxZoom: 18,
-  zoomOffset: -1,
-  accessToken: accessToken
-})
-
-const mbSatellite = new L.tileLayer(mapboxURL, {
+const mbSatellite = new L.tileLayer(mapboxAPI, {
   id: "mapbox/satellite-v9",
   tileSize: 512,
   maxZoom: 18,
@@ -123,6 +115,11 @@ const myMap = new L.map("mapid", {
   tap: false // remove touch screen problems
 })
 
+// Add attribution
+const credits = L.control.attribution({prefix: false}).addTo(myMap);
+const mapboxURL = "https://www.mapbox.com/about/maps/"
+credits.addAttribution(`© <a href="${mapboxURL}" target="_blank">Mapbox</a>`);
+
 // Add a legend on extent of building damage in lower Manhattan
 const legend = new L.control({ position: "bottomleft" })
 legend.onAdd = () => {
@@ -178,7 +175,6 @@ const groupedOverlays = {
 // Grouped basemaps
 const baseMaps = {
   Grayscale: mbLight,
-  Streets: mbStreets,
   Satellite: mbSatellite,
   "Ortho 2001": aerialGroup
 }

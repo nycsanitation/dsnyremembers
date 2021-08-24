@@ -1,6 +1,6 @@
 const accessToken =
   "pk.eyJ1IjoicmhpZ2dpbnMiLCJhIjoic1ZCV1I2byJ9.kMLgoNIPFb6yNAyKNG_ZQg"
-const mapboxURL =
+const mapboxAPI =
   "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}"
 L.MakiMarkers.accessToken = accessToken
 
