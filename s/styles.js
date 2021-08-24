@@ -4,10 +4,23 @@ const mapboxURL =
   "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}"
 L.MakiMarkers.accessToken = accessToken
 
+// Maki marker icon
+const portIcon = new L.MakiMarkers.icon({
+  icon: "harbor",
+  color: "#15abc2",
+  size: "m"
+})
+
+const videoIcon = new L.MakiMarkers.icon({
+  icon: "cinema",
+  color: "#000000",
+  size: "m"
+})
+
 const myStyle = {
   // First phase of clean up: 9/11/01 to 9/14/02
   cleanup1: {
-    color: "#19d18d",
+    color: "#0da16a",
     fillColor: "#42f5b3",
     weight: 2,
     opacity: 1,
@@ -15,7 +28,7 @@ const myStyle = {
   },
   // Second phase of clean up: 9/14/01 to 6/7/02
   cleanup2: {
-    color: "#7145b5",
+    color: "#503082",
     fillColor: "#a783de",
     weight: 2,
     opacity: 1,
@@ -60,7 +73,7 @@ const myStyle = {
       color: myStyle.getBuildingColor(feature.properties.damage),
       fillColor: myStyle.getBuildingColor(feature.properties.damage),
       weight: 2,
-      opacity: 0.85,
+      opacity: 1,
       fillOpacity: 0.6
     }
   },

@@ -99,12 +99,28 @@ const onEachBuilding = (feature, layer) => {
     }
   })
 }
+
 // Add perma tooltip to fresh kills
 const onEachArea = (feature, layer) => {
   layer.bindTooltip(feature.properties.location.toLocaleString(), {
     direction: "right",
     permanent: true,
     className: "tooltip-custom-fk"
+  })
+}
+
+// Add events to video markers
+const onEachVideo = (feature, layer) => {
+  const prop = "title"
+  layer.on({
+    click: e => {
+      if (!e.target.getPopup()) {
+        createPopup(e, prop)
+        e.target.openPopup(e.latlng)
+      } else {
+        e.target.closePopup()
+      }
+    }
   })
 }
 
@@ -123,8 +139,8 @@ const createPopup = (e, prop) => {
       : []
 
   if (prop === "sector") {
-    const area = Math.round(feature.properties.area).toLocaleString("en")
-    popupContent.push(`<h6><strong>Area:</strong><br>${area} sqft</h6>`)
+    const area = Math.round(feature.properties.area * 100) / 100
+    popupContent.push(`<h6><strong>Area:</strong><br>${area} acres</h6>`)
   } else if (prop === "port") {
     const tons = Math.round(feature.properties["total_ton"]).toLocaleString(
       "en"
@@ -140,12 +156,18 @@ const createPopup = (e, prop) => {
   } else if (prop === "building") {
     const damage = feature.properties.damage
     popupContent.push(`<h6><strong>Damage:</strong><br>${damage}</h6>`)
+  } else if (prop === "title") {
+    const link = feature.properties.link
+    const text = "/" + link.split("/").slice(1, 3).join("/")
+    popupContent.push(
+      `<h6><strong>Video Link:</strong><br><a href="${text}" target="_blank">${text}</a></h6>`
+    )
   }
 
   popupHTML = popupContent.join("")
 
   target.bindPopup(popupHTML, {
-    autoPan: false,
+    maxWidth: 150,
     className: "popup-custom"
   })
 }

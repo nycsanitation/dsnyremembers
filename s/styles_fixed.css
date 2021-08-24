@@ -99,13 +99,13 @@ body {
 /* Change map size based on screen size */
 @media only screen and (max-width: 799px) {
   #mapid {
-    height: 400px;
+    height: 600px;
   }
 }
 
 @media only screen and (max-width: 767px) {
   #mapid {
-    height: 300px;
+    height: 500px;
   }
 
   .container,
@@ -126,5 +126,16 @@ body {
     float: none !important;
     width: 100% !important;
     margin-left: 0px !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #mapid {
+    height: 400px;
+  }
+
+  .btn-group .btn {
+    padding: 0.15rem !important;
+    font-size: 0.8rem !important;
   }
 }

@@ -1,10 +1,3 @@
-// Maki marker icon
-const portIcon = new L.MakiMarkers.icon({
-  icon: "ferry",
-  color: "#15abc2",
-  size: "l"
-})
-
 // INITIALIZING LAYERS
 // LABEL LAYER
 const labelLayer = L.tileLayer(
@@ -100,10 +93,23 @@ const freshKills = new L.geoJSON(null, {
   onEachFeature: onEachArea
 })
 
+// Video links marker layer
+const videoLinks = new L.geoJSON(null, {
+  pointToLayer: (feature, latlng) => {
+    return L.marker(latlng, { icon: videoIcon })
+  },
+  onEachFeature: onEachVideo
+})
+
 const polygonLayerGroup = new L.layerGroup([cleanup1, cleanup2, buildingDamage])
 
 // Visibile layers on map
-const shownLayers = new L.layerGroup([debrisPorts, bargeRoutes, cleanup1])
+const shownLayers = new L.layerGroup([
+  debrisPorts,
+  bargeRoutes,
+  cleanup1,
+  videoLinks
+])
 
 const myMap = new L.map("mapid", {
   center: [40.707, -74.007],
@@ -139,7 +145,7 @@ legend.onAdd = () => {
     labels.push(
       `&ensp;<svg style="background: ${colorFunc(
         classes[i]
-      )}; opacity: 0.6; border: 1px solid black; width: 1.3em; height: 1.3em"></svg>&emsp;${
+      )}; opacity: 0.6; border: 1px solid black; width: 1.3em; height: 1.3em"></svg>&ensp;${
         classes[i]
       }`
     )
@@ -163,6 +169,9 @@ const groupedOverlays = {
     Ports: debrisPorts,
     "Truck Routes": truckRoutes,
     "Barge Routes": bargeRoutes
+  },
+  Other: {
+    Videos: videoLinks
   }
 }
 
@@ -180,33 +189,62 @@ const layerControls = new L.control.groupedLayers(
 ).addTo(myMap)
 
 // Add in Geojson data.
-$.getJSON("https://raw.githubusercontent.com/allan-lu/dsny/main/cleanup_zones1.geojson?token=ALPUUOBZ3NEPDJMF26HNBJ3BE74AC", data => {
-  cleanup1.addData(data)
-})
+const gitURL = "https://raw.githubusercontent.com/nycsanitation/dsnyremembers/main/layers/"
+$.getJSON(
+  `${gitURL}cleanup_zones1.geojson`,
+  data => {
+    cleanup1.addData(data)
+  }
+)
 
-$.getJSON("https://raw.githubusercontent.com/allan-lu/dsny/main/cleanup_zones2.geojson?token=ALPUUOFWJJFNBS5NQXHGHRDBE75KG", data => {
-  cleanup2.addData(data)
-})
+$.getJSON(
+  `${gitURL}cleanup_zones2.geojson`,
+  data => {
+    cleanup2.addData(data)
+  }
+)
 
-$.getJSON("https://raw.githubusercontent.com/allan-lu/dsny/main/debris_ports.geojson?token=ALPUUODZNKMNWGS2HWYOB2TBE75LG", data => {
-  debrisPorts.addData(data)
-})
+$.getJSON(
+  `${gitURL}debris_ports.geojson`,
+  data => {
+    debrisPorts.addData(data)
+  }
+)
 
-$.getJSON("https://raw.githubusercontent.com/allan-lu/dsny/main/barge_routes.geojson?token=ALPUUODDLGD3XJILHNWPSR3BE75GM", data => {
-  bargeRoutes.addData(data)
-})
+$.getJSON(
+  `${gitURL}barge_routes.geojson`,
+  data => {
+    bargeRoutes.addData(data)
+  }
+)
 
-$.getJSON("https://raw.githubusercontent.com/allan-lu/dsny/main/truck_routes.geojson?token=ALPUUODMXXSAWHSBVW7G3U3BE75OY", data => {
-  truckRoutes.addData(data)
-})
+$.getJSON(
+  `${gitURL}truck_routes.geojson`,
+  data => {
+    truckRoutes.addData(data)
+  }
+)
 
-$.getJSON("https://raw.githubusercontent.com/allan-lu/dsny/main/building_damage.geojson?token=ALPUUOAFUTRN26ZG2CMWZBLBE75IW", data => {
-  buildingDamage.addData(data)
-})
+$.getJSON(
+  `${gitURL}building_damage.geojson`,
+  data => {
+    buildingDamage.addData(data)
+  }
+)
 
-$.getJSON("https://raw.githubusercontent.com/allan-lu/dsny/main/fresh_kills.geojson?token=ALPUUOHTUU7RP5HT5HSTIHLBE75NM", data => {
-  freshKills.addData(data)
-})
+$.getJSON(
+  `${gitURL}fresh_kills.geojson`,
+  data => {
+    freshKills.addData(data)
+  }
+)
+
+$.getJSON(
+  `${gitURL}videos.geojson`,
+  data => {
+    videoLinks.addData(data)
+  }
+)
 
 // Map events
 myMap.on({
@@ -267,7 +305,7 @@ $(document).ready(() => {
   $("#header button").click(e => {
     let bounds
     const id = $(e.target).attr("id")
-    const options = { duration: 0.25 }
+    const options = { padding: [-10, -10], duration: 0.20 }
     shownLayers.clearLayers()
     if (id == "btn-cz") {
       bounds = cleanup2.getBounds()
@@ -284,9 +322,15 @@ $(document).ready(() => {
         .addLayer(truckRoutes)
     } else if (id == "btn-fk") {
       bounds = freshKills.getBounds()
-      shownLayers.addLayer(mbSatellite).addLayer(freshKills).addLayer(debrisPorts)
+      shownLayers
+        .addLayer(mbSatellite)
+        .addLayer(freshKills)
+        .addLayer(debrisPorts)
     }
     myMap.flyToBounds(bounds, options)
+    if (id != "btn-dt") {
+      shownLayers.addLayer(videoLinks)
+    }
     shownLayers.addTo(myMap)
   })
   myMap.flyToBounds(cleanup1.getBounds())
