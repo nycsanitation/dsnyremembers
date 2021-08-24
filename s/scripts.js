@@ -230,7 +230,7 @@ myMap.on({
   },
   overlayadd: overlay => {
     const zoom = myMap.getZoom()
-    // layer style shoould be reset
+    // Layer style shoould be reset
     polygonLayerGroup.eachLayer(layer => {
       layer.resetStyle()
       if (zoom > 14) {
@@ -245,8 +245,10 @@ myMap.on({
         })
       }
     })
+    // Keep track of which layers have been added to the map
     shownLayers.addLayer(overlay.layer)
 
+    // Add legend if buildingDamage layer is added
     if (overlay.name == "Building Damage") legend.addTo(myMap)
   },
   overlayremove: overlay => {
@@ -254,7 +256,7 @@ myMap.on({
 
     if (overlay.name == "Building Damage") myMap.removeControl(legend)
   },
-  // hide permanent cleanup sector tooltips at certain zoom levels
+  // Hide permanent cleanup sector tooltips at certain zoom levels
   zoomend: () => {
     const zoom = myMap.getZoom()
     polygonLayerGroup.eachLayer(layer => {

@@ -87,7 +87,7 @@ const myStyle = {
   getBuildingColor(damage) {
     const color =
       damage == "Destroyed"
-        ? "#000000"
+        ? "#563587"
         : damage == "Partial Collapse"
         ? "#9c1010"
         : damage == "Major Damage"
