@@ -116,9 +116,10 @@ const myMap = new L.map("mapid", {
 })
 
 // Add attribution
-const credits = L.control.attribution({prefix: false}).addTo(myMap);
+const credits = L.control.attribution({ prefix: false }).addTo(myMap)
 const mapboxURL = "https://www.mapbox.com/about/maps/"
-credits.addAttribution(`© <a href="${mapboxURL}" target="_blank">Mapbox</a>`);
+credits.addAttribution(`© <a href="${mapboxURL}" target="_blank">Mapbox</a>`)
+
 
 // Add a legend on extent of building damage in lower Manhattan
 const legend = new L.control({ position: "bottomleft" })
@@ -185,62 +186,39 @@ const layerControls = new L.control.groupedLayers(
 ).addTo(myMap)
 
 // Add in Geojson data.
-const gitURL = "https://raw.githubusercontent.com/nycsanitation/dsnyremembers/main/layers/"
-$.getJSON(
-  `${gitURL}cleanup_zones1.geojson`,
-  data => {
-    cleanup1.addData(data)
-  }
-)
+const gitURL =
+  "https://raw.githubusercontent.com/nycsanitation/dsnyremembers/main/layers/"
+$.getJSON(`${gitURL}cleanup_zones1.geojson`, data => {
+  cleanup1.addData(data)
+})
 
-$.getJSON(
-  `${gitURL}cleanup_zones2.geojson`,
-  data => {
-    cleanup2.addData(data)
-  }
-)
+$.getJSON(`${gitURL}cleanup_zones2.geojson`, data => {
+  cleanup2.addData(data)
+})
 
-$.getJSON(
-  `${gitURL}debris_ports.geojson`,
-  data => {
-    debrisPorts.addData(data)
-  }
-)
+$.getJSON(`${gitURL}debris_ports.geojson`, data => {
+  debrisPorts.addData(data)
+})
 
-$.getJSON(
-  `${gitURL}barge_routes.geojson`,
-  data => {
-    bargeRoutes.addData(data)
-  }
-)
+$.getJSON(`${gitURL}barge_routes.geojson`, data => {
+  bargeRoutes.addData(data)
+})
 
-$.getJSON(
-  `${gitURL}truck_routes.geojson`,
-  data => {
-    truckRoutes.addData(data)
-  }
-)
+$.getJSON(`${gitURL}truck_routes.geojson`, data => {
+  truckRoutes.addData(data)
+})
 
-$.getJSON(
-  `${gitURL}building_damage.geojson`,
-  data => {
-    buildingDamage.addData(data)
-  }
-)
+$.getJSON(`${gitURL}building_damage.geojson`, data => {
+  buildingDamage.addData(data)
+})
 
-$.getJSON(
-  `${gitURL}fresh_kills.geojson`,
-  data => {
-    freshKills.addData(data)
-  }
-)
+$.getJSON(`${gitURL}fresh_kills.geojson`, data => {
+  freshKills.addData(data)
+})
 
-$.getJSON(
-  `${gitURL}videos.geojson`,
-  data => {
-    videoLinks.addData(data)
-  }
-)
+$.getJSON(`${gitURL}videos.geojson`, data => {
+  videoLinks.addData(data)
+})
 
 // Map events
 myMap.on({
@@ -301,7 +279,7 @@ $(document).ready(() => {
   $("#header button").click(e => {
     let bounds
     const id = $(e.target).attr("id")
-    const options = { padding: [-10, -10], duration: 0.20 }
+    const options = { padding: [-10, -10], duration: 0.2 }
     shownLayers.clearLayers()
     if (id == "btn-cz") {
       bounds = cleanup2.getBounds()
