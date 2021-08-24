@@ -5,7 +5,7 @@
 "features": [
 { "type": "Feature", "properties": { "id": 0, "title": "Fresh Kills: Unloading Barges", "link": "dsnyremembers.org\/fresh-kills-recovery\/#video-barges" }, "geometry": { "type": "Point", "coordinates": [ -74.197930944966174, 40.577021343196705 ] } },
 { "type": "Feature", "properties": { "id": 1, "title": "Fresh Kills: The Hill", "link": "dsnyremembers.org\/fresh-kills-recovery\/#video-hill" }, "geometry": { "type": "Point", "coordinates": [ -74.204633819413701, 40.565961634677286 ] } },
-{ "type": "Feature", "properties": { "id": 2, "title": "Ground Zero: Debris Removal", "link": "dsnyremembers.org\/wtc-site\/#removal" }, "geometry": { "type": "Point", "coordinates": [ -74.013209268616407, 40.711531625729002 ] } },
+{ "type": "Feature", "properties": { "id": 2, "title": "Ground Zero: Debris Removal", "link": "dsnyremembers.org\/wtc-site\/#video-removal" }, "geometry": { "type": "Point", "coordinates": [ -74.013209268616407, 40.711531625729002 ] } },
 { "type": "Feature", "properties": { "id": 3, "title": "Cleaning Manhattan and Ground Zero", "link": "dsnyremembers.org\/cleaning-the-city\/#video-cleaning" }, "geometry": { "type": "Point", "coordinates": [ -74.007625465311463, 40.710255562448978 ] } }
 ]
 }
