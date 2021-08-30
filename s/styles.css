@@ -5,6 +5,16 @@ body {
   padding: 0;
 }
 
+footer .collectionlink-title a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer .custom-footer-left a {
+  color: #f2bd36;
+  text-decoration: none;
+}
+
 /* MAP CONTAINER */
 #mapid {
   height: 700px;
