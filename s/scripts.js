@@ -159,11 +159,11 @@ const groupedOverlays = {
     "Phase 1": cleanup1,
     "Phase 2": cleanup2
   },
-  "Debris Field": {
+  "Debris Field & Burial": {
     "Building Damage": buildingDamage,
-    "Fresh Kills Burial Site": freshKills
+    "Fresh Kills Landfill": freshKills
   },
-  "WTC Debris Transport": {
+  "Debris Transport": {
     Ports: debrisPorts,
     "Truck Routes": truckRoutes,
     "Barge Routes": bargeRoutes
