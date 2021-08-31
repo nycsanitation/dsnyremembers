@@ -99,6 +99,7 @@ const polygonLayerGroup = new L.layerGroup([cleanup1, cleanup2, buildingDamage])
 const shownLayers = new L.layerGroup([
   debrisPorts,
   bargeRoutes,
+  truckRoutes,
   cleanup1,
   videoLinks
 ])
@@ -301,7 +302,6 @@ $(document).ready(() => {
       shownLayers
         .addLayer(mbSatellite)
         .addLayer(freshKills)
-        .addLayer(debrisPorts)
     }
     myMap.flyToBounds(bounds, options)
     if (id != "btn-dt") {
